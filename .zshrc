@@ -1,10 +1,20 @@
 # Aliases
 alias fuckwebp="mogrify -format png -quality 80 *.webp && rm *.webp"
 alias cargo="cargo mommy "
+alias xc3refresh="xc3sprog -c ftdi"
+alias xc3fastflash="xc3sprog -c ftdi -L -v -p 0 "
+alias xc3permflash="xc3sprog -c ftdi -L spiflasherLX9.bit && xc3sprog -c ftdi -L -v -R -p 0 -I "
 
 # Environment Variables
 export PKGEXT='.pkg.tar'
 
+# pnpm
+export PNPM_HOME="/home/phuwit/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -43,14 +53,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# pnpm
-export PNPM_HOME="/home/phuwit/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -154,3 +156,8 @@ if [[ "$TERM" == (Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|r
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
+
+# # use mommy
+# set -o PROMPT_SUBST
+# RPS1='$(mommy -1 -s $?)'  # using single quotes here is required!
+# precmd() { mommy -1 -s $? }
