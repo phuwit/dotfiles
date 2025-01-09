@@ -2,11 +2,15 @@
 alias fuckwebp="mogrify -format png -quality 80 *.webp && rm *.webp"
 alias cargo="cargo mommy "
 alias xc3refresh="xc3sprog -c ftdi"
-alias xc3fastflash="xc3sprog -c ftdi -L -v -p 0 "
-alias xc3permflash="xc3sprog -c ftdi -L spiflasherLX9.bit && xc3sprog -c ftdi -L -v -R -p 0 -I "
-
-# Environment Variables
-export PKGEXT='.pkg.tar'
+alias xc3fastflash="xc3sprog -c ftdi && xc3sprog -c ftdi -L -v -p 0 "
+alias xc3permflash="xc3sprog -c ftdi && xc3sprog -c ftdi -L /home/phuwit/Programming/KMITL-DigitalSystemsFundamentals/spiflasherLX9.bit && xc3sprog -c ftdi -L -v -R -p 0 -I "
+alias upgrade="sudo sh -c 'pacman -Sy && powerpill -Su' && paru -Sua"
+alias update="sudo pacman -Sy"
+alias listoptdeps="expac -S "%o" "
+alias mirror-refresh="sudo reflector --country 'Thailand,Singapore,Hong Kong,Taiwan,Japan,' --download-timeout 10 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
+alias aria2cx16="aria2c -s 16 -j 16 -x 16 "
+alias wifi-reboot="sudo sh -c 'rmmod iwlmvm && rmmod iwlwifi && modprobe iwlmvm && modprobe iwlwifi'"
+alias yt-dlp-wd="yt-dlp --config-location ~/.config/yt-dlp/config-wd "
 
 # pnpm
 export PNPM_HOME="/home/phuwit/.local/share/pnpm"
@@ -15,6 +19,13 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Environment Variables
+export PKGEXT='.pkg.tar'
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export CHROME_EXECUTABLE=/usr/bin/chromium
+export ANDROID_HOME=/home/phuwit/Android/Sdk
+export PATH="/home/phuwit/.local/bin:$PATH"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -161,3 +172,5 @@ fi
 # set -o PROMPT_SUBST
 # RPS1='$(mommy -1 -s $?)'  # using single quotes here is required!
 # precmd() { mommy -1 -s $? }
+
+export QSYS_ROOTDIR="/home/phuwit/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
