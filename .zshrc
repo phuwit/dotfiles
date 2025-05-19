@@ -4,13 +4,16 @@ alias cargo="cargo mommy "
 alias xc3refresh="xc3sprog -c ftdi"
 alias xc3fastflash="xc3sprog -c ftdi && xc3sprog -c ftdi -L -v -p 0 "
 alias xc3permflash="xc3sprog -c ftdi && xc3sprog -c ftdi -L /home/phuwit/Programming/KMITL-DigitalSystemsFundamentals/spiflasherLX9.bit && xc3sprog -c ftdi -L -v -R -p 0 -I "
-alias upgrade="sudo sh -c 'pacman -Sy && powerpill -Su' && paru -Sua"
+alias upgrade="sudo sh -c 'pacman -Sy && powerpill -Su' && paru -Sua; flatpak update --assumeyes"
 alias update="sudo pacman -Sy"
 alias listoptdeps="expac -S "%o" "
 alias mirror-refresh="sudo reflector --country 'Thailand,Singapore,Hong Kong,Taiwan,Japan,' --download-timeout 10 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
 alias aria2cx16="aria2c -s 16 -j 16 -x 16 "
 alias wifi-reboot="sudo sh -c 'rmmod iwlmvm && rmmod iwlwifi && modprobe iwlmvm && modprobe iwlwifi'"
 alias yt-dlp-wd="yt-dlp --config-location ~/.config/yt-dlp/config-wd "
+alias yt-dlp-c="yt-dlp --cookies-from-browser=firefox "
+alias mpv-c="mpv --ytdl-raw-options='cookies-from-browser=firefox' "
+alias compose-update="sudo sh -c 'docker compose down && docker compose pull && docker compose up -d && docker compose logs -f '"
 
 # pnpm
 export PNPM_HOME="/home/phuwit/.local/share/pnpm"
@@ -22,7 +25,6 @@ esac
 
 # Environment Variables
 export PKGEXT='.pkg.tar'
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 export CHROME_EXECUTABLE=/usr/bin/chromium
 export ANDROID_HOME=/home/phuwit/Android/Sdk
 export PATH="/home/phuwit/.local/bin:$PATH"
