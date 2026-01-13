@@ -2,7 +2,7 @@
 --no-mtime
 
 # Save all videos under YouTube directory in your home directory
--o ~/Downloads/yt-dlp/%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s
+-o ~/Downloads/yt-dlp/%(title)s.%(ext)s
 
 # subs
 --embed-subs
@@ -17,3 +17,6 @@
 # aria2
 # --external-downloader aria2c
 # --external-downloader-args "-c -j 8 -s 8 -x 8 -k 1M"
+
+# concurrent
+--concurrent-fragments 4

@@ -2,13 +2,14 @@
 --no-mtime
 
 # Save all videos under YouTube directory in your home directory
--o "%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s"
+-o ~/Downloads/yt-dlp/%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s
 
 # subs
 --embed-subs
 --write-subs
 # --write-auto-subs
 --sub-langs all
+--extractor-args "youtube:skip=translated_subs"
 
 # Download full playlists
 --yes-playlist
